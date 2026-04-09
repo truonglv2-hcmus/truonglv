@@ -1,270 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<title>FPT Shop</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Bootstrap -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Photo Gallery</title>
+    <style>
+        #image {
+            width: 600px;
+            height: 400px;
+            border: 2px solid #333;
+            margin-bottom: 20px;
+            background-color: #f4f4f4;
+            background-image: url('');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            line-height: 400px;
+            text-align: center;
+            font-size: 20px;
+            color: #222;
+        }
 
-	<!--Embed your css here-->
-	<link rel="stylesheet" href="css/styleindex.css">
-
+        img {
+            width: 180px;
+            height: 120px;
+            margin: 10px;
+            cursor: pointer;
+            border: 2px solid #999;
+        }
+    </style>
 </head>
-
 <body>
 
-	<div> <!--div contains all the web page content-->
+    <div id="image">Hover over an image below to display here.</div>
 
-		<div id="header"> <!--div contains header content-->
+    <img src="https://via.placeholder.com/600x400?text=Image+1"
+         alt="Beautiful mountain landscape"
+         onmouseover="upDate(this)"
+         onmouseout="unDo()">
 
-			<div class="header-left">
-				<img src="images/Logo.PNG" alt="FPT Shop" />
-			</div>
+    <img src="https://via.placeholder.com/600x400?text=Image+2"
+         alt="Calm beach at sunset"
+         onmouseover="upDate(this)"
+         onmouseout="unDo()">
 
-			<div class="header-right">
-				<p>
-					<img src="images/chuong.PNG" alt="New news notification bell" />
-					<img src="images/userLogin.PNG" alt="User Login" />
-				</p>
-				<p class="hi-gia-minh" style="font-size: small;">
-					Hi, Lê Gia Minh
-				</p>
-			</div>
+    <img src="https://via.placeholder.com/600x400?text=Image+3"
+         alt="Green forest path"
+         onmouseover="upDate(this)"
+         onmouseout="unDo()">
 
-		</div> <!-- finish div contains header content-->
+    <script>
+        function upDate(previewPic) {
+            console.log("Mouse over image");
+            console.log("Alt text:", previewPic.alt);
+            console.log("Source:", previewPic.src);
 
-		<!-------------------------------------------------------------------------------------------------------------->
-		<div class="container-fluid">
-			<div class="row"> <!--div contains detailed content of the page-->
+            const imageDiv = document.getElementById("image");
+            imageDiv.innerHTML = previewPic.alt;
+            imageDiv.style.backgroundImage = "url('" + previewPic.src + "')";
+        }
 
-				<div class="col-md-2" id="nav"> <!--div contains menu content-->
+        function unDo() {
+            console.log("Mouse left image");
 
-					<nav style="border: none;" class="navbar navbar-inverse sidebar" role="navigation">
-						<div class="container-fluid">
-							<!-- Brand and toggle get grouped for better mobile display -->
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle" data-toggle="collapse"
-									data-target="#bs-sidebar-navbar-collapse-1">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								</button>
-								<a class="navbar-brand" href="#">Dashboard</a>
-
-							</div>
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-								<ul class="nav navbar-nav">
-									<li><a href="#">Home<span style="font-size:16px;"
-												class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
-									</li>
-
-									<li class="active" ><a style="background-color: orange;" href="#">Manage Orders</a></li>
-									<li><a href="#">Manage Products</a></li>
-									<li><a href="#">Manage Supplier</a></li>
-									<li><a href="#">Manage Staff</a></li>
-									<li><a href="#">View inventory</a></li>
-									<li><a href="#">Messages</a></li>
-
-								</ul>
-							</div>
-						</div>
-					</nav>
-
-				</div> <!-- Finish div contains menu content-->
-
-				<!-------------------------------------------------------------------------------------------------------------->
-				<div class="col-md-10" id="main-content"> <!--div contains all the content on the right side of the menu-->
-
-					<div> <!--div contains order title content-->
-
-						<h2>List of orders pending approval</h2>
-
-					</div><!-- Finish div contains order title content-->
-
-
-					<div class="ct-1-search"> <!--div contains search content-->
-
-						<div class="input-group ct-1-input" id="adv-search" style="float: right; margin-right: 20px;">
-							<input type="text" class="form-control" style="width: 100%;" placeholder="Search order" />
-							<div class="input-group-btn group-search-filter">
-								<div style="display: flex;" class="btn-group" role="group">
-									<div class="dropdown dropdown-lg">
-										<button type="button" class="btn btn-default dropdown-toggle"
-											data-toggle="dropdown" aria-expanded="false"><span
-												class="caret"></span></button>
-										<div class="dropdown-menu dropdown-menu-right" role="menu">
-											<form class="form-horizontal" role="form">
-												<div class="form-group">
-													<label for="filter">Filter by</label>
-													<select class="form-control">
-														<option value="0" selected>ID</option>
-														<option value="1">Customer</option>
-														<option value="2">Phone</option>
-													</select>
-												</div>
-												<button type="submit" class="btn btn-primary"><span
-														class="glyphicon glyphicon-search"
-														aria-hidden="true"></span></button>
-											</form>
-										</div>
-									</div>
-									<button type="button" class="btn btn-primary"><span
-											class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-								</div>
-							</div>
-						</div>
-
-						<div style="clear: both"></div>
-
-					</div> <!--Finish div contains search content-->
-
-
-					<div> <!--div contains table content-->
-
-						<div class="table">
-
-							<table>
-
-								<thead class="table-head">
-									<tr>
-										<th>#Id</th>
-										<th>Customer</th>
-										<th>Phone</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-
-								<tbody>
-									<tr class="table-1 table-border">
-										<td>H0001</td>
-										<td>Nguyen Van An</td>
-										<td>0981234567</td>
-										<td>...</td>
-									</tr>
-
-									<tr class="table-border">
-										<td>H0002</td>
-										<td>Le Minh Thanh</td>
-										<td>0938888745</td>
-										<td>...</td>
-									</tr>
-
-									<tr class="table-1 table-border">
-										<td>H0003</td>
-										<td>Le Thanh Thao</td>
-										<td>0933339451</td>
-										<td>...</td>
-									</tr>
-
-									<tr class="table-border">
-										<td>H0004</td>
-										<td>Le Thanh Thuy</td>
-										<td>0933339997</td>
-										<td>...</td>
-									</tr>
-
-								</tbody>
-							</table>
-
-						</div>
-
-					</div> <!--div contains table content-->
-
-					<!-------------------------------------------------------------------------------------------------------------->
-
-					<div > <!--div contains Iphone title content-->
-						<h2>Iphone 2025 Import Information</h2>
-					</div> <!-- Finish div contains Iphone title content-->
-
-					<div class="col-md-4 ct-2-img"> <!--div contains Iphone Image content-->
-						<img src="images/Iphone17pm.jpg" alt="Iphone 17 Promax 256B" />
-					</div> <!-- Finish div contains Iphone Image content-->
-
-					<div class="col-md-8 ct-2-form"> <!--div contains Iphone form input content-->
-
-						<form action="#">
-
-							<div class="form-group">
-								<label for="product_name">Product Name</label>
-								<input type="text" class="form-control" id="product_name" name="Product Name">
-							</div>
-
-							<div class="form-group">
-								<label for="Memory">Memory</label>
-								<input type="text" class="form-control" id="Memory" name="Memory">
-							</div>
-
-							<div class="form-group">
-								<label for="Quantity">Quantity</label>
-								<input type="text" class="form-control" id="Quantity" name="Quantity">
-							</div>
-
-							<div class="form-group">
-								<label for="Buy_Price">Buy Price</label>
-								<input type="text" class="form-control" id="Buy_Price" name="Buy_Price">
-							</div>
-
-							<div class="form-group">
-								<label for="Sell_Price">Sell Price</label>
-								<input type="text" class="form-control" id="Sell_Price" name="Sell_Price">
-							</div>
-
-							<button type="submit" class="btn btn-default">Save</button>
-
-						</form>
-
-					</div> <!-- finish div contains Iphone form input content-->
-
-					<!-------------------------------------------------------------------------------------------------------------->
-
-					<div class="col-md-12 ct-3-h2"> <!--div contains stores title content-->
-						<h2>List of stores in Ho Chi Minh City and Ha Noi</h2>
-					</div> <!-- Finish div contains stores title content-->
-
-					<!--The divs describe store information-->
-					<div class="col-md-6 ct-3-img">
-
-						<img src="images/FPTShop_HCM.jpg" alt="Store HCM" />
-						<p>Address : 121 Le Loi (Garmin Store), Ben Thanh Ward, District 1, Ho Chi Minh City</p>
-
-					</div>
-
-					<div class="col-md-6 ct-3-img">
-
-						<img src="images/FPTShop_HN.jpg" alt="Store Ha Noi" />
-						<p>Address : 350 Minh Khai (Garmin Store), Vinh Tuy Ward, Hai Ba Trung District, Hanoi City</p>
-
-					</div>
-					<!-- Finish the divs describe store information-->
-
-				</div> <!-- Finish div contains all the content on the right side of the menu-->
-
-			</div> <!--Finish div contains detailed content of the page-->
-		</div>
-		<!-------------------------------------------------------------------------------------------------------------->
-
-		<div id="footer"> <!--div contains Footer content-->
-
-			<div>
-
-				<p>Email : fptshop@fpt.com</p>
-				<p>Address: 261 - 263 Khanh Hoi, Ward 2, District 4, Ho Chi Minh City</p>
-				<h5>Business Registration Certificate No. 0311609355 issued by Ho Chi Minh City Department of Planning
-					and Investment on March 8, 2012</h5>
-			</div>
-
-		</div> <!-- finish div contains Footer content-->
-
-	</div> <!-- finish div contains all the web page content-->
-
-
-	<script src="js/Jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+            const imageDiv = document.getElementById("image");
+            imageDiv.innerHTML = "Hover over an image below to display here.";
+            imageDiv.style.backgroundImage = "url('')";
+        }
+    </script>
 
 </body>
-
 </html>
